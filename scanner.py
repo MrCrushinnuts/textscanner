@@ -2,9 +2,7 @@ import argparse
 import re
 
 def normalize_line(line):
-    
     line = re.sub(r'[^\w\s]', '', line).lower()
-    
     line = re.sub(r'\s+', '', line)
     return line
 
@@ -12,11 +10,9 @@ def scan_text_document(input_line, text_document):
     with open(text_document, 'r') as file:
         lines = file.readlines()
 
-    
         normalized_input_line = normalize_line(input_line)
 
         for line in lines:
-            
             normalized_line = normalize_line(line)
 
             if normalized_input_line in normalized_line:
@@ -29,5 +25,4 @@ if __name__ == '__main__':
 
     args = parser.parse_args()
 
-    
     scan_text_document(args.line, args.text_document)
